@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Price Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🏠 Melbourne House Price Predictor</h1>
+      <p class="subtitle">Enter property details to predict the price</p>
+
+      <form id="predictionForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Number of Rooms:</label>
+            <input type="number" name="rooms" required min="1" max="10" />
+          </div>
+
+          <div class="form-group">
+            <label>Number of Bathrooms:</label>
+            <input
+              type="number"
+              name="bathroom"
+              step="0.5"
+              required
+              min="0"
+              max="10"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Car Spaces:</label>
+            <input type="number" name="car" required min="0" max="10" />
+          </div>
+
+          <div class="form-group">
+            <label>Land Size (sqm):</label>
+            <input type="number" name="landsize" required min="0" />
+          </div>
+
+          <div class="form-group">
+            <label>Building Area (sqm):</label>
+            <input type="number" name="buildingarea" required min="0" />
+          </div>
+
+          <div class="form-group">
+            <label>Year Built:</label>
+            <input
+              type="number"
+              name="yearbuilt"
+              required
+              min="1800"
+              max="2024"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Latitude:</label>
+            <input type="number" name="lattitude" step="0.0001" required />
+          </div>
+
+          <div class="form-group">
+            <label>Longitude:</label>
+            <input type="number" name="longtitude" step="0.0001" required />
+          </div>
+
+          <div class="form-group">
+            <label>Property Count in Area:</label>
+            <input type="number" name="propertycount" required min="0" />
+          </div>
+
+          <div class="form-group">
+            <label>Distance to CBD (km):</label>
+            <input type="number" name="distance" step="0.1" required min="0" />
+          </div>
+
+          <div class="form-group">
+            <label>Year (for date):</label>
+            <input type="number" name="year" required min="2016" max="2018" />
+          </div>
+
+          <div class="form-group">
+            <label>Month (1-12):</label>
+            <input type="number" name="month" required min="1" max="12" />
+          </div>
+
+          <div class="form-group">
+            <label>Suburb Frequency Value:</label>
+            <input type="number" name="suburb_freq" step="0.1" required />
+          </div>
+
+          <div class="form-group">
+            <label>Seller Frequency Value:</label>
+            <input type="number" name="sellerg_freq" step="0.1" required />
+          </div>
+
+          <div class="form-group">
+            <label>Council Area Frequency:</label>
+            <input type="number" name="councilarea_freq" step="0.1" required />
+          </div>
+        </div>
+
+        <h3>Property Type:</h3>
+        <div class="radio-group">
+          <label><input type="radio" name="type_h" value="1" /> House</label>
+          <label
+            ><input type="radio" name="type_t" value="1" /> Townhouse</label
+          >
+          <label
+            ><input type="radio" name="type_h" value="0" checked /> Unit</label
+          >
+        </div>
+
+        <h3>Sale Method:</h3>
+        <div class="radio-group">
+          <label
+            ><input type="radio" name="method_pi" value="1" /> PI (Private
+            Treaty)</label
+          >
+          <label
+            ><input type="radio" name="method_sp" value="1" /> SP (Sold
+            Prior)</label
+          >
+          <label
+            ><input type="radio" name="method_vb" value="1" /> VB (Vendor
+            Bid)</label
+          >
+          <label
+            ><input type="radio" name="method_pi" value="0" checked />
+            Other</label
+          >
+        </div>
+
+        <h3>Region:</h3>
+        <div class="radio-group">
+          <label
+            ><input type="radio" name="region_eastern" value="1" /> Eastern
+            Metropolitan</label
+          >
+          <label
+            ><input type="radio" name="region_eastern_vic" value="1" /> Eastern
+            Victoria</label
+          >
+          <label
+            ><input type="radio" name="region_northern" value="1" /> Northern
+            Metropolitan</label
+          >
+          <label
+            ><input type="radio" name="region_northern_vic" value="1" />
+            Northern Victoria</label
+          >
+          <label
+            ><input type="radio" name="region_southeastern" value="1" />
+            Southeastern Metropolitan</label
+          >
+          <label
+            ><input type="radio" name="region_southern" value="1" /> Southern
+            Metropolitan</label
+          >
+          <label
+            ><input type="radio" name="region_western" value="1" /> Western
+            Metropolitan</label
+          >
+          <label
+            ><input type="radio" name="region_western_vic" value="1" /> Western
+            Victoria</label
+          >
+          <label
+            ><input type="radio" name="region_eastern" value="0" checked />
+            Other</label
+          >
+        </div>
+
+        <button type="submit">Predict Price</button>
+      </form>
+
+      <div id="result" class="result" style="display: none">
+        <h2>Predicted Price:</h2>
+        <p id="predictionValue"></p>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
