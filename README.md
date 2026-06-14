@@ -93,3 +93,9 @@ JavaScript
     ├── README.md
     │
     └── house_price_model.pkl
+
+## 📸 Application Workflow
+    Enter housing details.
+    Submit the form.
+    Model processes the input.
+    Predicted house price is displayed instantly.
